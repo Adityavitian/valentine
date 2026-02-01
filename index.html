@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Purvii!! Will You Be My Valentine? ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <video id="bgVideo" autoplay muted loop>
+    <source src="assets/bg-video.mp4" type="video/mp4">
+  </video>
+
+  <audio id="song">
+    <source src="assets/song.mp3" type="audio/mp3">
+  </audio>
+
+  <div class="container" id="container">
+    <h1 id="question">Will you be my Valentine? 💌</h1>
+
+    <div class="buttons" id="buttons">
+      <button onclick="firstYes()">Yes</button>
+      <button id="noBtn" onclick="removeNo()">No</button>
+    </div>
+  </div>
+
+  <div id="final" class="hidden">
+    <img src="assets/photo.jpg" class="photo heartbeat">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
