@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Georgia', serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Background video */
+#bgVideo {
+    position: fixed;
+    z-index: -2; /* Pushed further back */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dark overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Center content */
+.container {
+    position: relative; 
+    z-index: 10; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Question text */
+#question {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  animation: fadeIn 2s ease;
+}
+
+/* Buttons */
+.buttons button {
+  font-size: 1.5rem;
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+}
+
+.buttons button:first-child {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: #aaa;
+}
+
+/* Final image */
+.hidden {
+  display: none;
+}
+
+#final {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5; /* Behind the pop-up but in front of video */
+}
+
+.photo {
+  max-width: 60%;
+  border-radius: 20px;
+  animation: heartbeat 1.5s infinite;
+}
+
+/* --- NEW POP-UP STYLES --- */
+#akkiiPopup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Stays on the very top */
+    transition: opacity 0.5s ease;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, #ff4d6d, #ff0000);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 50px crimson;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popup-content h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px black;
+}
+
+.popup-content p {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.popup-content button {
+    margin-top: 20px;
+    padding: 10px 30px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.popup-hidden {
+    display: none !important;
+}
+
+/* Animations */
+@keyframes popIn {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.05); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 24px;
+  animation: floatUp 6s linear infinite;
+  color: red;
+  z-index: 100; /* Hearts float over everything but the pop-up */
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
